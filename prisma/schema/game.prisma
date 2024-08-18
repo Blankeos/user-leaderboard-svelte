@@ -1,0 +1,13 @@
+/// A point is a record that holds the user's points at a given time.
+/// This can be used to track "Current", "All Time", "Weekly", "Monthly" winners as well.
+model Point {
+  id        String   @id
+  userId    String
+  amount    Int
+  timestamp DateTime @default(now())
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+
+  @@index([timestamp])
+}
+
+// Your other game-related models here.
